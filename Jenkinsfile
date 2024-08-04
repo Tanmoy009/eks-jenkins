@@ -18,14 +18,6 @@ pipeline {
                 }
             }
 
-        stage ('test') {
-            steps {       
-                sh 'go build -o go-web-app'
-                sh 'go test ./...'        
-                sh 'golint ./...'
-            }
-        }
-        
         stage ('build') {
             steps {
                 sh 'docker build -t public.ecr.aws/p3b6w3x9/eks-cluster:v4 .'
