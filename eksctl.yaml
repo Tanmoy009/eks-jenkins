@@ -1,0 +1,24 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-test-cluster
+  region: ap-south-1
+
+vpc:
+  id: "vpc-0ed4f9e62bc4fdae4"
+  subnets:
+    private:
+      ap-south-1a:
+          id: "subnet-0639798bcd67a0d9d"
+      ap-south-1b:
+          id: "subnet-06536f44af74fd245"
+
+nodeGroups:
+  - name: eks-test-cluster-ng
+    instanceType: t3.medium
+    desiredCapacity: 2
+    privateNetworking: true
+    subnets:
+      - ap-south-1a
+      - ap-south-1b
