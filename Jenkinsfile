@@ -6,6 +6,18 @@ pipeline {
     }
     agent any
     stages {
+
+        stage('checkout') {
+            steps {
+                 script{
+                        dir("eks-jenkins")
+                        {
+                            git branch: 'main', url: 'https://github.com/Tanmoy009/eks-jenkins.git'
+                        }
+                    }
+                }
+            }
+
         stage ('test') {
             steps {               
                 sh 'golint ./...'
