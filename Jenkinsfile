@@ -1,14 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-        githubPullRequest()
-    }
-
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '5'))
-    }
-
     stages {
         stage('Build') {
             agent {
